@@ -8,10 +8,10 @@ This project analyses approximately **12,000 used-car records with 30+ key vehic
 ## Analytical Approach
 
 ### EDA & Feature Understanding
-•	Explored relationships between price and key vehicle attributes to understand pricing behaviour and identify important price drivers.
+•	Explored relationships between **price** and **key vehicle attributes** to understand **pricing behaviour** and identify important price drivers.
 
 ### Model Training & Selection
-•	Trained and compared three regression models (Bagging, Random Forest, and Stacked Regression), selecting the best-performing model based on price prediction accuracy using Mean Squared Error (MSE).
+•	Trained and compared **three regression models (Bagging, Random Forest, and Stacked Regression)**, selecting the best-performing model based on price prediction accuracy using Mean Squared Error (MSE).
 
 ### Price Prediction & Transformation
 •	Predicted prices on unseen test data and applied a log transformation to stabilise price distribution and improve prediction consistency.
@@ -21,17 +21,17 @@ This project analyses approximately **12,000 used-car records with 30+ key vehic
 
 ### Key Price Drivers:
 
-•	Used-car prices are mainly driven by engine performance, vehicle age and mileage, and vehicle segment. Performance commands price premiums, while mileage only matters when considered alongside vehicle age.
+•	Used-car prices are mainly driven by **engine performance, vehicle age and mileage, and vehicle segment**. Performance commands price premiums, while mileage only matters when considered in conjunction with vehicle age.
 
 
 ### Price Behaviour:
 
-•	Used-car prices do not change at a constant rate over time. Price movements are better understood as percentage-based changes rather than fixed dollar amounts, especially across different price segments.
+•	Used-car prices do not change at a constant rate over time. Price movements are better understood as **percentage-based changes** rather than fixed dollar amounts, especially across different price segments.
 
 
 ### Pricing Risk:
 
-•	Pricing risk is highest in high-value vehicles, where small pricing errors can lead to disproportionately large financial losses.
+•	Pricing risk is **highest in high-value vehicles**, where small pricing errors can lead to disproportionately large financial losses.
 
 
 ## Recommendation
@@ -45,7 +45,7 @@ This project analyses approximately **12,000 used-car records with 30+ key vehic
 
 
 ## Deliverable & Impact
-The project delivers a trained pricing prediction model supported by clear pricing insights and usage guidance, enabling more consistent pricing decisions and better risk awareness across sales and acquisition teams.
+The project delivers a trained pricing prediction model, supported by clear pricing insights and usage guidance, enabling more consistent pricing decisions and improved risk awareness across sales teams.
 
 ---
 
@@ -54,7 +54,7 @@ The project delivers a trained pricing prediction model supported by clear prici
 
 ## Data Overview
 - 12,000 records, 30+ vehicle attributes
-- Target variable: Price
+- Target variable: **Price**
 - Train-test split applied (80/20)
 
 ## Evaluation Metrics
@@ -74,26 +74,26 @@ The project delivers a trained pricing prediction model supported by clear prici
 
 
 ### Powerful Engines and Price Relation:
-- Vehicles with stronger engine characteristics (horsepower, displacement, torque, and power) are generally priced higher, indicating that engine performance is a key price driver.
-- These performance attributes are strongly negatively correlated with fuel efficiency, showing a clear trade-off between performance and fuel economy.
+- Vehicles with stronger engine characteristics (horsepower, displacement, torque, and power) are generally priced higher, indicating that **engine performance** is a key price driver.
+- These performance attributes are **strongly negatively correlated** with fuel efficiency, showing a clear trade-off between **performance and fuel economy**.
   
 ### Torque and Power RPM Preferences:
 - Higher-priced vehicles tend to reach peak power and torque at lower RPMs, suggesting a market preference for smoother and more efficient power delivery rather than high-rev performance.
 
 ### Mileage and Market Age Influence on Price:
 - Higher mileage is associated with lower prices, reflecting normal depreciation from usage.
-- Mileage is also strongly negatively correlated with vehicle release year, indicating that newer vehicles command higher prices, likely due to lower wear and updated features.
+- Mileage is also **strongly negatively correlated** with vehicle release year, indicating that newer vehicles command higher prices, likely due to lower wear and updated features.
 
 
   
 ## Model Selection & Training
-- Used Lasso regression as a diagnostic baseline and examined the residual plot to assess linearity assumptions.
+- Used **Lasso regression** as a diagnostic baseline and examined the residual plot to assess linearity assumptions.
 
 <img width="988" height="404" alt="residual plto" src="https://github.com/user-attachments/assets/ee0f79df-9486-49a6-96e4-e6bc54f60c08" />
 
 => The residual plot shows a **U-shaped pattern**, indicating non-linear relationships that cannot be captured by linear models.
 
-- Non-linear ensemble models were selected for price prediction:
+- **Non-linear ensemble** models were selected for price prediction:
     - Bagging Regressor
     - Random Forest Regressor
     - Stacked Regression (Bagging + Random Forest)
