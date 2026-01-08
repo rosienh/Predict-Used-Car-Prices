@@ -46,3 +46,40 @@ This project analyses approximately **12,000 used-car records with 30+ key vehic
 
 ## Deliverable & Impact
 The project delivers a trained pricing prediction model supported by clear pricing insights and usage guidance, enabling more consistent pricing decisions and better risk awareness across sales and acquisition teams.
+
+---
+
+
+# Technical Details
+
+### Data Overview
+- 12,000 records, 30+ vehicle attributes
+- Target variable: Price
+- Train-test split applied (80/20)
+
+### Evaluation Metrics
+- **Mean Squared Error (MSE)** measures price prediction error.
+- **R² score** measured the proportion of price variation explained by the model.
+
+### Data Preparation
+- Performed **data preprocessing** (handling missing values, encoding categorical variables, and feature standardisation).
+- **Log transformation** applied to **Price** to reduce skewness.
+- **Feature selection** based on insights from exploratory analysis.
+  
+### Exploratory Data Analysis (EDA)
+- Analysed price distribution and relationships between price and key vehicle attributes.
+- Identified key price drivers, segment-level differences, and non-linear pricing behaviour.
+  
+### Model Selection & Training
+- Used linear regression as a diagnostic baseline and identified limitations of linear assumptions.
+- Selected, trained, and compared three **non-linear ensemble regression** models:
+   - Bagging Regressor
+   - Random Forest Regressor
+   - Stacked Regression (Bagging + Random Forest)
+  
+### Hyperparameter Tuning
+- Tuned model hyperparameters using cross-validation to improve prediction accuracy and stability.
+
+###Final Model Evaluation
+- Compared model performance on unseen test data using MSE and R².
+- Selected the final model based on overall accuracy and prediction stability.
