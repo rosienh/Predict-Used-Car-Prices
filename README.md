@@ -67,40 +67,52 @@ The project delivers a trained pricing prediction model supported by clear prici
 - **Feature selection** based on insights from exploratory analysis.
   
 ## Exploratory Data Analysis (EDA)
-- Analysed price distribution and relationships between price and key vehicle attributes.
-- Identified key price drivers, segment-level differences, and non-linear pricing behaviour.
 
 <img width="977" height="573" alt="corealtion feature w price" src="https://github.com/user-attachments/assets/d8c817b1-0360-4aaa-a039-0c06944ccc45" />
 
-
-
 <img width="718" height="668" alt="corelation matrix" src="https://github.com/user-attachments/assets/2ab35ec4-5ec2-4bf7-930d-1db6f96b6a66" />
 
-## Insights from EDA
 
 ### Powerful Engines and Price Relation:
-- Cars with more powerful engines, represented by higher values in horsepower, engine displacement, maximum torque, and power, are generally more expensive. This relationship suggests that engine specifications are a major contributor to a vehicle's market price.
-- However, these performance attributes exhibit a strong negative correlation with fuel-efficiency metrics of more than -70%. Thus, while high-performance vehicles are priced higher, they tend to be less fuel-efficient.
+- Vehicles with stronger engine characteristics (horsepower, displacement, torque, and power) are generally priced higher, indicating that engine performance is a key price driver.
+- These performance attributes are strongly negatively correlated with fuel efficiency, showing a clear trade-off between performance and fuel economy.
   
 ### Torque and Power RPM Preferences:
-- Moderate negative correlations exist between RPMs (for both power and torque) and price, indicating a consumer preference for vehicles that reach higher peak power and torque at lower RPMs.
+- Higher-priced vehicles tend to reach peak power and torque at lower RPMs, suggesting a market preference for smoother and more efficient power delivery rather than high-rev performance.
 
 ### Mileage and Market Age Influence on Price:
-- Cars with higher mileage tend to be less expensive, reflecting the typical depreciation associated with higher usage.
-- Mileage shows a strong negative correlation with the year of the car's release, highlighting that newer vehicles command higher prices. This might present a preference for newer models, likely due to updated features, technology, or lower wear.
+- Higher mileage is associated with lower prices, reflecting normal depreciation from usage.
+- Mileage is also strongly negatively correlated with vehicle release year, indicating that newer vehicles command higher prices, likely due to lower wear and updated features.
 
 
   
 ## Model Selection & Training
-- Used linear regression as a diagnostic baseline and identified limitations of linear assumptions.
-- Selected, trained, and compared three **non-linear ensemble regression** models:
-   - Bagging Regressor
-   - Random Forest Regressor
-   - Stacked Regression (Bagging + Random Forest)
-  
-### Hyperparameter Tuning
-- Tuned model hyperparameters using cross-validation to improve prediction accuracy and stability.
+- Used Lasso regression as a diagnostic baseline and examined the residual plot to assess linearity assumptions.
 
-###Final Model Evaluation
-- Compared model performance on unseen test data using MSE and R².
-- Selected the final model based on overall accuracy and prediction stability.
+<img width="988" height="404" alt="residual plto" src="https://github.com/user-attachments/assets/ee0f79df-9486-49a6-96e4-e6bc54f60c08" />
+
+=> The residual plot shows a **U-shaped pattern**, indicating non-linear relationships that cannot be captured by linear models.
+
+- Non-linear ensemble models were selected for price prediction:
+    - Bagging Regressor
+    - Random Forest Regressor
+    - Stacked Regression (Bagging + Random Forest)
+
+### Model Comparison
+<img width="948" height="222" alt="model comparison" src="https://github.com/user-attachments/assets/69e8ec84-0ce7-4c99-a0f7-3f2cc7fc6f6e" />
+
+
+### Hyperparameter Tuning 
+- Tuned model hyperparameters using **cross-validation** to improve prediction accuracy and stability.
+
+### Impact of Log Transformation
+- Compared model performance **before and after** log transformation of the target variable (price).
+  
+<img width="614" height="169" alt="log vs no log" src="https://github.com/user-attachments/assets/4b0fceb7-96ee-4558-aed6-254fe5e37626" />
+
+=> Log-transformed models showed **lower error and more stable predictions**.
+
+
+### Final Model Evaluation
+- Log-transformed ensemble models achieved **lower Training and Test MSE** compared to non-log models, indicating improved handling of variance and outliers.
+- **Log Bagging** showed the best overall performance, with **high Test R²** and **stable generalisation** on unseen data.
